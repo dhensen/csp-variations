@@ -120,4 +120,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-CSP_REPORT_ONLY = True
+# A basic django-csp policy gives a green badge on https://securityheaders.com/.
+
+CSP_REPORT_ONLY = False  # Report only does NOT give a green badge on https://securityheaders.com/.
+
+CSP_DEFAULT_SRC = ('self', 'unsafe-inline')
