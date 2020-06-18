@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    build:
+        context: .
+        dockerfile: containers/app/Dockerfile
+
+  nginx:
+    build:
+        context: containers/nginx
+    ports:
+      - 80:80

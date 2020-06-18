@@ -25,7 +25,7 @@ SECRET_KEY = '&=rnf227w@bgp&=m9c*_gib=0mfcj3!&hk=j90d51cn(h6g6w1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['app']
 
 
 # Application definition
@@ -47,9 +47,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
-ROOT_URLCONF = 'csp_variations.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'csp_variations.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
