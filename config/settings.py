@@ -25,7 +25,7 @@ SECRET_KEY = '&=rnf227w@bgp&=m9c*_gib=0mfcj3!&hk=j90d51cn(h6g6w1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['app']
+ALLOWED_HOSTS = ['app','localhost','127.0.0.1']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'csp_variations.common',
 ]
 
 MIDDLEWARE = [
@@ -124,4 +125,27 @@ STATIC_URL = '/static/'
 
 CSP_REPORT_ONLY = False  # Report only does NOT give a green badge on https://securityheaders.com/.
 
-CSP_DEFAULT_SRC = ('self', 'unsafe-inline')
+UNSAFE_INLINE = "'unsafe-inline'"
+UNSAFE_HASHES = "'unsafe-hashes'"
+SELF = "'self'"
+CSP_DEFAULT_SRC = [SELF]
+
+# def create_hash(value):
+#     import hashlib
+#     import base64
+#     hs = hashlib.sha256(value.encode('utf-8')).hexdigest()
+#     print(hs)
+#     b64 = base64.standard_b64encode(hs.encode('utf-8'))
+#     print(b64)
+#     return f'sha256-{b64}'
+
+CSP_SCRIPT_SRC = [
+    UNSAFE_HASHES,
+    "'sha256-QG19jZGfT8U5nG8sdvSLKRjInTUUiTJlbkxWl38HBZw='",
+]
+
+
+# CSP_SCRIPT_SRC_ATTR = [
+#     UNSAFE_HASHES,
+#     "'sha256-QG19jZGfT8U5nG8sdvSLKRjInTUUiTJlbkxWl38HBZw='",
+# ]

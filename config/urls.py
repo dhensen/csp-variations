@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from csp_variations.common.views import foobar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', foobar)
 ]
